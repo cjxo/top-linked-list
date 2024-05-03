@@ -56,18 +56,17 @@ function createLinkedList() {
         if (lastNode) {
             popped = lastNode;
 
-            let oneBeforeLastNode = firstNode;
-
-            while (oneBeforeLastNode.nextNode && (oneBeforeLastNode.nextNode !== lastNode)) {
-                oneBeforeLastNode = oneBeforeLastNode.nextNode;
+            let currentNode = firstNode;
+            while (currentNode && (currentNode.nextNode !== lastNode)) {
+                currentNode = currentNode.nextNode;
             }
 
-            if ((oneBeforeLastNode === firstNode) && (oneBeforeLastNode === lastNode)) {
-                firstNode = null;
-                lastNode = null;
-            } else {
-                lastNode = oneBeforeLastNode;
+            lastNode = currentNode;
+
+            if (currentNode) {
                 lastNode.nextNode = null;
+            } else {
+                firstNode = null;
             }
 
             --nodeCount;
@@ -225,4 +224,10 @@ console.log(ll.toString());
 console.log("popped: ", ll.pop());
 console.log("size: ", ll.size);
 console.log(ll.toString());
+
+console.log(ll.head);
+console.log(ll.tail);
+console.log("popped: ", ll.pop());
 console.log("size: ", ll.size);
+console.log(ll.head);
+console.log(ll.tail);

@@ -40,8 +40,12 @@ function createLinkedList() {
     };
 
     const at = (index) => {
-        const result = firstNode;
-        while ((index-- >= 0) && result) {
+        if ((index >= nodeCount) || (index < 0)) {
+            throw new Error("index out of range!");
+        }
+
+        let result = firstNode;
+        while ((--index >= 0) && result) {
             result = result.nextNode;
         }
         return(result);
@@ -200,6 +204,7 @@ console.log(ll.toString());
 console.log("removed: ", ll.removeAt(ll.size - 1));
 console.log(ll.toString());
 ll.prepend("HAHA");
+console.log("NANA: ", ll.at(ll.size - 1));
 
 const containsValue = 4;
 console.log(`contains ${containsValue}? ${ll.contains(containsValue)}`);
